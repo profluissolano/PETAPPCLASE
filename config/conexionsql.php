@@ -14,14 +14,16 @@
 
             try{
                 //conectar a la base de datos
-                $conexion = new PDO('mysql:host=localhost;dbname='.$this->bdname,
+                $this->conexion = new PDO('mysql:host=localhost;dbname='.$this->bdname,
                                 $this->username, $this->pass);
-                foreach($conexion->query('SELECT * FROM especie') as $especie){
+             /*   foreach($conexion->query('SELECT * FROM especie') as $especie){
                     echo 'NOMBRE DE ESPECIE: ' . $especie[1]. '</br>';
-                }
+                }*/
             }catch(PDOException $e){
                 echo "Ocurrio un error al conectarme a la base de datos ";//. $e;
             }
+
+            return $this->conexion;
 
         }
 
